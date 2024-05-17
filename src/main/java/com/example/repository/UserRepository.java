@@ -26,7 +26,12 @@ public interface UserRepository extends CrudRepository<EntityUser, Integer> {
 
 	@Modifying
 	@Transactional
-	@Query(value = "UPDATE EntityUser SET userpass = :newPass WHERE username = :userName AND userpass = :userPass")
+	@Query(value = "UPDATE EntityUser SET userpass = :newPass WHERE username  = :userName AND userpass = :userPass")
 	int updateUserPass(String userName, String userPass, String newPass);
 
+
+//	@Modifying
+//	@Transactional
+//	@Query(value = "DELETE FROM EntityUser WHERE username = :userName AND userpass = :userPass")
+//	int deleteUser(String userName, String userPass);
 }

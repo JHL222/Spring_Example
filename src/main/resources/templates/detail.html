@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Board Detail</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f8f9fa;
+		}
+
+		#top-bar {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+			text-align: center;
+		}
+
+		#top-bar h1 {
+			margin: 0;
+		}
+
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		.board-detail {
+			background-color: #fff;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			padding: 20px;
+		}
+
+		.post {
+			margin-bottom: 30px;
+		}
+
+		.post-header {
+			border-bottom: 1px solid #ddd;
+			padding-bottom: 10px;
+			margin-bottom: 10px;
+		}
+
+		.post-title {
+			font-size: 24px;
+			margin: 0;
+		}
+
+		.post-meta {
+			color: #666;
+			font-size: 14px;
+		}
+
+		.post-content {
+			font-size: 16px;
+			line-height: 1.6;
+		}
+
+		a {
+			display: block;
+			margin-top: 20px;
+			text-align: center;
+			text-decoration: none;
+			color: #007bff;
+		}
+
+		#homeButton {
+			text-decoration: none;
+			color: white;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="top-bar">
+		<a id="homeButton" href="/Home">
+			<h1 id="boardHome">Board</h1>
+		</a>
+	</div>
+	<div class="container">
+		<div class="board-detail">
+			<div class="post">
+				<div class="post-header">
+					<h2 class="post-title" th:text="${board.title}">Title</h2>
+					<div class="post-meta">
+						<span class="author" th:text="${board.author}">Author</span>
+						<span class="date" th:text="${board.date}">Date</span>
+					</div>
+				</div>
+				<div class="post-content" th:text="${board.content}">
+					Content
+				</div>
+			</div>
+		</div>
+		<a th:href="@{'/edit/' + ${board.id}}">수정</a>
+		<a th:href="@{'/deleteBoard/' + ${board.id}}">삭제</a>
+	</div>
+</body>
+
+</html>

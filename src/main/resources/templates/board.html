@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Board App</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+		#top-bar {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+			text-align: center;
+		}
+
+		#top-bar h1 {
+			margin: 0;
+		}
+
+		#main {
+			margin: 20px auto;
+			width: 70%;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			background-color: #fff;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		th,
+		td {
+			padding: 12px 15px;
+			text-align: left;
+			border-bottom: 1px solid #dddddd;
+		}
+
+		th {
+			background-color: #f2f2f2;
+		}
+
+		tr:hover {
+			background-color: #f5f5f5;
+			cursor: pointer;
+		}
+
+		#homeButton {
+			text-decoration: none;
+			color: white;
+		}
+	</style>
+	<script>
+		function moveDetail(idx) {
+			location.href = `detail/` + idx;
+		}
+	</script>
+</head>
+
+<body>
+	<!-- Top Bar -->
+	<div id="top-bar">
+		<a id="homeButton" href="/Home">
+			<h1 id="boardHome">Board</h1>
+		</a>
+	</div>
+	
+
+	<!-- Main Content -->
+	<div id="main">
+		<!-- Table Declaration -->
+		<table>
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>글쓴이</th>
+					<th>날짜</th>
+					
+				</tr>
+			</thead>
+
+			<tbody>
+				<!-- Iterate over the list of items -->
+				<tr th:each="list : ${tableList}" th:onclick="'moveDetail(' + ${list.id} + ')'">
+					<td><span th:text="${list.id}"></span></td>
+					<td><span th:text="${list.Title}"></span></td>
+					<td><span th:text="${list.Author}"></span></td>
+					<td><span th:text="${list.Date}"></span></td>
+					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<!-- Write Button -->
+	<div style="text-align: center; margin-top: 20px;">
+		<a href="/write.html">글쓰기</a>
+	</div>
+
+</body>
+
+</html>

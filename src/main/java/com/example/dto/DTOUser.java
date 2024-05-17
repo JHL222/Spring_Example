@@ -15,9 +15,7 @@ public class DTOUser {
 	public DTOUser() {
 		
 	}
-	
-	
-	
+
 	public String getUser_Name() {
 		return User_Name;
 	}
